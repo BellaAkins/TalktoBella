@@ -4,8 +4,6 @@
   margin: 0;
   font-family: "Quicksand";
   color: #000;
-  background: #000;
-  color: #f2f2f2;
 }
 .navbar {
   padding: 20px;
@@ -38,7 +36,7 @@
   padding: 20px;
 }
 
-.homepage {
+.blogheader {
   text-align: center;
 }
 

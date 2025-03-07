@@ -38,6 +38,18 @@
 
 .blogheader {
   text-align: center;
+  margin-top: 30px;
+}
+
+.blogheader h1 {
+  font-size: 2.3rem;
+  margin-bottom: 20px;
+}
+
+.blogheader p {
+  letter-spacing: normal;
+  font-size: 1.3rem;
+  line-height: 2rem;
 }
 
 /*Blog Preview*/

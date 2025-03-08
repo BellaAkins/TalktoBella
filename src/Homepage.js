@@ -22,6 +22,7 @@ const Homepage = () => {
       id: 3,
     },
   ]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleDelete = (id) => {
     const newBlogs = blogs.filter((singleBlog) => singleBlog.id !== id);
@@ -29,8 +30,18 @@ const Homepage = () => {
   };
 
   useEffect(() => {
-    console.log("it worked");
-  });
+    setTimeout(() => {
+      fetch("http://localhost:8000/blogs")
+        .then((res) => {
+          return res.json();
+        })
+        .then((actualData) => {
+          console.log(actualData);
+          setBlogs(actualData);
+          setIsLoading(false);
+        });
+    }, 1000);
+  }, []);
   return (
     <div className="homepage ">
       <div className="blogheader">
@@ -46,7 +57,15 @@ const Homepage = () => {
       </div>
 
       <div className="blog-preview">
-        <BlogList blogs={blogs} title="All Blogs" handleDelete={handleDelete} />
+        {isLoading && <div>Loading...</div>}
+        {blogs && (
+          <BlogList
+            blogs={blogs}
+            title="All Blogs"
+            handleDelete={handleDelete}
+          />
+        )}
+
         {/* <BlogList
           blogs={blogs.filter(
             (singleBlog) => singleBlog.author === "TioluWaLope"

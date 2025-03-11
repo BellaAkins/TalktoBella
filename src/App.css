@@ -3,7 +3,7 @@
 * {
   margin: 0;
   font-family: "Quicksand";
-  color: #000;
+  color: #333;
 }
 .navbar {
   padding: 20px;
@@ -24,7 +24,6 @@
   margin-left: 16px;
   text-decoration: none;
   padding: 6px;
-  /*  color: #f2f2f2;*/
   font-size: 1rem;
 }
 .navbar a:hover {
@@ -73,7 +72,7 @@
   text-decoration: none;
 }
 
-/*Blog Detaila*/
+/*Blog Details*/
 
 .blog-details h2 {
   font-size: 22px;

@@ -1,47 +1,13 @@
-import { useEffect, useState } from "react";
 import BlogList from "./Bloglist";
+import useFetch from "./usefetch";
 
 const Homepage = () => {
-  const [blogs, setBlogs] = useState([
-    {
-      title: "My new website",
-      body: "Welcome to my new website. I hope you enjoy your stay!",
-      author: "Bella",
-      id: 1,
-    },
-    {
-      title: "Welcome party!",
-      body: "Join us this Saturday for a welcome party at my house!",
-      author: "TioluwaLope",
-      id: 2,
-    },
-    {
-      title: "The best burger in town",
-      body: "Come try the best burger in town at Joe's Burgers!",
-      author: "TioluwaLope",
-      id: 3,
-    },
-  ]);
-  const [isLoading, setIsLoading] = useState(true);
+  const {
+    myData: blogs,
+    isLoading,
+    error,
+  } = useFetch("http://localhost:8000/blogs");
 
-  const handleDelete = (id) => {
-    const newBlogs = blogs.filter((singleBlog) => singleBlog.id !== id);
-    setBlogs(newBlogs);
-  };
-
-  useEffect(() => {
-    setTimeout(() => {
-      fetch("http://localhost:8000/blogs")
-        .then((res) => {
-          return res.json();
-        })
-        .then((actualData) => {
-          console.log(actualData);
-          setBlogs(actualData);
-          setIsLoading(false);
-        });
-    }, 1000);
-  }, []);
   return (
     <div className="homepage ">
       <div className="blogheader">
@@ -57,21 +23,9 @@ const Homepage = () => {
       </div>
 
       <div className="blog-preview">
+        {error && <div>{error}</div>}
         {isLoading && <div>Loading...</div>}
-        {blogs && (
-          <BlogList
-            blogs={blogs}
-            title="All Blogs"
-            handleDelete={handleDelete}
-          />
-        )}
-
-        {/* <BlogList
-          blogs={blogs.filter(
-            (singleBlog) => singleBlog.author === "TioluWaLope"
-          )}
-          title="Bella Blogs"
-        /> */}
+        {blogs && <BlogList blogs={blogs} title="All Blogs" />}
       </div>
     </div>
   );

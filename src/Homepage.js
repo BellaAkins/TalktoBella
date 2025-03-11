@@ -17,7 +17,7 @@ const Homepage = () => {
             Here you can find all the latest and greatest blog posts on the
             internet. Whether you are interested in technology, sports, or
             entertainment, we have something for you. you can also add your own
-            blog post by clicking the button below.
+            blog post by clicking the button .
           </p>
         }
       </div>
